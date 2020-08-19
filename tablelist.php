@@ -30,10 +30,10 @@
                     $result = mysqli_query($connect,$query) or die(mysqli_error($connect));
                     echo "<div class='container'><table width='' class='table table-bordered' border='1' >
                             <tr>
-                                <th>Faculty</th>
-								<th>Course</th>
-                                <th>Subject</th>
-								<th>Room</th>
+                                <th>id</th>
+                                <th>Employee</th>
+								<th>Job</th>
+                                <th>Business</th>
 								<th>Start time</th>
 								<th>End time</th>
                                 <th>Action</th>
@@ -41,7 +41,7 @@
                         while($row = mysqli_fetch_array($result))
                         {
                         echo "<tr>";
-                        echo "<td>" . $row['faculty'] . "</td>";
+                        echo "<td>" . $row['id'] . "</td>";
 						echo "<td>" . $row['course'] . "</td>";
                         echo "<td>" . $row['subject'] . "</td>";
 						echo "<td>" . $row['room'] . "</td>";
