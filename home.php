@@ -13,19 +13,19 @@ $connect = mysqli_connect("localhost", "root", "") or die("couldn't connect to t
 mysqli_select_db($connect, "shiftmanagent") or die("couldn't find database!");
 
 // mysql select query
-$query = "SELECT * FROM `course`";
+$query = "SELECT * FROM `user`";
 
 // for method 1
 
 $result1 = mysqli_query($connect, $query);
 
 // for method 2
-$query = "SELECT * FROM `faculty`";
+$query = "SELECT * FROM `user`";
 $result2 = mysqli_query($connect, $query);
 
 $options = "";
 
-while ($row2 = mysqli_fetch_array($result2, $resulttype=MYSQLI_BOTH)) {
+while ($row2 = mysqli_fetch_array($result2, $resulttype = MYSQLI_BOTH)) {
     $options = $options . "<option>$row2[1]</option>";
 }
 
@@ -69,25 +69,17 @@ include_once("navbar.php");
 
                             <body>
 
-                                <!-- Method Two -->
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label" for="faculty">Faculty</label>
-                                    <div class="col-md-5">
-                                        <select id="faculty" name="faculty" class="form-control">
-                                            <?php echo $options; ?>
-                                        </select>
-                                    </div>
-                                </div>
+                             
 
                                 <!--Method One-->
                                 <div class="form-group">
-                                    <label class="col-md-4 control-label" for="Course">Course</label>
+                                    <label class="col-md-4 control-label" for="Course">Employee</label>
                                     <div class="col-md-5">
                                         <select id="course" name="course" class="form-control">
 
                                             <?php while ($row1 = mysqli_fetch_array($result1)) :; ?>
 
-                                                <option value="<?php echo $row1[2]; ?>"><?php echo $row1[2]; ?></option>
+                                                <option value="<?php echo $row1[1]; ?>"><?php echo $row1[1]; ?></option>
 
                                             <?php endwhile; ?>
 
@@ -113,14 +105,14 @@ $query = "SELECT * FROM `business`";
 $result1 = mysqli_query($connect, $query);
 
 // for method 2
-$query = "SELECT * FROM `subject`";
+$query = "SELECT * FROM `job`";
 $result2 = mysqli_query($connect, $query);
 
 
 $options = "";
 
 while ($row2 = mysqli_fetch_array($result2)) {
-    $options = $options . "<option>$row2[2]</option>";
+    $options = $options . "<option>$row2[1]</option>";
 }
 
 ?>
@@ -144,7 +136,7 @@ while ($row2 = mysqli_fetch_array($result2)) {
 
         <!-- Method Two -->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="subject">Subject</label>
+            <label class="col-md-4 control-label" for="subject">Job Done</label>
             <div class="col-md-5">
                 <select id="subject" name="subject" class="form-control">
                     <?php echo $options; ?>
@@ -202,7 +194,7 @@ while ($row2 = mysqli_fetch_array($result2)) {
 
                 <!-- Method Two -->
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="room">Room</label>
+                    <label class="col-md-4 control-label" for="room">Business</label>
                     <div class="col-md-5">
                         <select id="room" name="room" class="form-control">
                             <?php echo $options; ?>
