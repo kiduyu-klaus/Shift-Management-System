@@ -1,16 +1,7 @@
 <?php 
 
   // php select option value from database
-
-$hostname = "localhost";
-$username = "root";
-$password = "";
-$databaseName = "insertion";
-
-$con = mysqli_connect("localhost", "root", "") or die("couldn't connect to the database!");
-
-// connect to mysql database
-mysqli_select_db($con, "shiftmanagent") or die("couldn't find database!"); 	 
+  include('config.php');	 
 
  function getPosts()
    {

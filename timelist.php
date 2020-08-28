@@ -27,7 +27,6 @@ include_once("navbar.php");
         }
 
 
-        </body>
     </style>
 </head>
 
@@ -38,20 +37,10 @@ include_once("navbar.php");
             <?php
             echo "<tr>
             <td>";
-            // php select option value from database
-
-            $hostname = "localhost";
-            $username = "root";
-            $password = "";
-            $databaseName = "insertion";
-
-            $connect = mysqli_connect("localhost", "root", "") or die("couldn't connect to the database!");
-
-            // connect to mysql database
-            mysqli_select_db($connect, "shiftmanagent") or die("couldn't find database!");
+            include('config.php');	
 
             $query = ("SELECT * FROM timer");
-            $result = mysqli_query($connect,$query) or die(mysqli_error($connect));
+            $result = mysqli_query($con,$query) or die(mysqli_error($con));
             echo "<div class='container'><table width='' class='table table-bordered' border='1' >
                             <tr>
                              <th>Start time</th>
@@ -81,10 +70,10 @@ include_once("navbar.php");
                            </script>';
             }
             if (isset($_POST['id'])) {
-                $id = mysqli_real_escape_string($connect,$_POST['id']);
+                $id = mysqli_real_escape_string($con,$_POST['id']);
                 $sql = mysqli_query($connect,"DELETE FROM timer WHERE id='$id'");
                 if (!$sql) {
-                    echo ("Could not delete rows" . mysqli_error($connect));
+                    echo ("Could not delete rows" . mysqli_error($con));
                 }
             }
             ?>

@@ -24,7 +24,6 @@ td {
 }
 
 
-</body>
 </style>
 </head>
 <body><br>
@@ -35,20 +34,10 @@ td {
     <?php
      echo "<tr>
             <td>";
-                // php select option value from database
-
-            $hostname = "localhost";
-            $username = "root";
-            $password = "";
-            $databaseName = "insertion";
-
-            $connect = mysqli_connect("localhost", "root", "") or die("couldn't connect to the database!");
-
-            // connect to mysql database
-            mysqli_select_db($connect, "shiftmanagent") or die("couldn't find database!"); 
+            include('config.php');	
 
                     $query = ("SELECT * FROM subject");
-                    $result = mysqli_query($connect,$query) or die(mysqli_error($connect));
+                    $result = mysqli_query($con,$query) or die(mysqli_error($con));
                     echo "<div class='container'><table width='' class='table table-bordered' border='1' >
                             <tr>
                                 <th>Code</th>
@@ -81,11 +70,11 @@ td {
     }
     if(isset($_POST['subject_id']))
     {
-    $subject_id = mysqli_real_escape_string($connect,$_POST['subject_id']);
-    $sql = mysqli_query($connect,"DELETE FROM subject WHERE subject_id='$subject_id'");
+    $subject_id = mysqli_real_escape_string($con,$_POST['subject_id']);
+    $sql = mysqli_query($con,"DELETE FROM subject WHERE subject_id='$subject_id'");
     if(!$sql)
     {
-        echo ("Could not delete rows" .mysqli_error($connect));
+        echo ("Could not delete rows" .mysqli_error($con));
     }
     
     }
